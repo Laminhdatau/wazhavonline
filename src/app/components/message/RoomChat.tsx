@@ -37,7 +37,7 @@ export const RoomChat = () => {
   ]);
 
   return (
-    <div className="flex flex-col px-6">
+    <div className="flex flex-col px-6 border border-red-500">
       <div className="flex items-center">
         <div className="flex-shrink-0 h-10 w-10">
           {/* Foto profil bulat */}
@@ -57,7 +57,7 @@ export const RoomChat = () => {
       </div>
 
       <div
-        className="flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-gray-100 p-2"
+        className="flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-gray-100 p-2 "
         style={{
           backgroundImage: 'url("./message/bgchat.png")',
           backgroundRepeat: "repeat",

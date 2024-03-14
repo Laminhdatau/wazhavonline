@@ -28,7 +28,7 @@ export const ChatList = () => {
   ];
 
   return (
-    <div className="flex flex-col h-full bg-white-600 w-1/4  border">
+    <div className="flex flex-col h-full bg-white-600 w-1/4  border border-red-500">
       {/* Sidebar ChatList */}
       <h2 className="text-xl font-bold p-4 shadow-md ">Chat List</h2>
       {/* Daftar chat akan ditampilkan di sini */}
