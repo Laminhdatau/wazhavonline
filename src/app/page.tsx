@@ -1,5 +1,5 @@
 'use client'
-import { SetStateAction, useState } from 'react';
+import {  useState } from 'react';
 import Sidebar from "./components/_partials/Sidebar";
 import Navbar from "./components/_partials/Navbar";
 import Footer from "./components/_partials/Footer";

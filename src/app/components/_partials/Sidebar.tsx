@@ -11,40 +11,45 @@ const Sidebar: React.FC<SidebarProps> = ({ onItemClick, toggleSidebar }) => {
   const [isOpen] = useState(false);
 
   return (
-    <div className={`bg-green-800 text-white transition-transform ease-in-out duration-300 md:w-64 ${isOpen ? 'w-64' : 'w-15'}`}>
+    <div className={`bg-gradient-to-r from-orange-400 to-red-500 text-white transition-transform ease-in-out duration-300 md:w-64 ${isOpen ? 'w-64' : 'w-15'}`}>
       {/* Sidebar Content */}
       <div className="flex flex-col h-full">
         {/* Logo */}
-        <div className="flex items-center justify-center h-20 text-white bold">
-          <Image src="/message.svg" alt="Logo" width={50} height={40} />
+        <div className="flex items-center justify-center h-20 text-white font-bold shadow-md">
+          <h1 className={`${isOpen ? '' : 'hidden md:block'} ml-2 font-bold `}>WAZHAV</h1>
+          <Image src="/message.svg" alt="Logo" width={40} height={40} />
         </div>
 
         <nav className={`flex-1 items-center justify-center h-20 ${isOpen ? 'hidden' : ''}`}>
           <ul className="py-4">
-            <li className="flex items-center px-4 py-2 text-gray-300 hover:bg-green-700 hover:cursor-pointer" onClick={() => onItemClick('messages')}>
+            <li className="flex items-center px-4 py-2 text-white-800 hover:bg-gray-500 hover:cursor-pointer" onClick={() => onItemClick('messages')}>
               <InboxIcon className="h-6 w-6 mr-2" />
               <a href="#" className={`${isOpen ? '' : 'hidden md:block'} ml-2`} >Message</a>
             </li>
-            <li className="flex items-center px-4 py-2 text-gray-300 hover:bg-green-700 hover:cursor-pointer" onClick={() => onItemClick('broadcast')}>
+            <li className="flex items-center px-4 py-2 text-white-800 hover:bg-gray-500 hover:cursor-pointer" onClick={() => onItemClick('broadcast')}>
               <NewspaperIcon className="h-6 w-6 mr-2" />
               <a href="#" className={`${isOpen ? '' : 'hidden md:block'} ml-2`} >Broadcast</a>
             </li>
-            <li className="flex items-center px-4 py-2 text-gray-300 hover:bg-green-700 hover:cursor-pointer" onClick={() => onItemClick('finance')}>
+            <li className="flex items-center px-4 py-2 text-white-800 hover:bg-gray-500 hover:cursor-pointer" onClick={() => onItemClick('finance')}>
               <CurrencyDollarIcon className="h-6 w-6 mr-2" />
               <a href="#" className={`${isOpen ? '' : 'hidden md:block'} ml-2`} >Finance</a>
             </li>
-            <li className="flex items-center px-4 py-2 text-gray-300 hover:bg-green-700 hover:cursor-pointer" onClick={() => onItemClick('report')}>
+            <li className="flex items-center px-4 py-2 text-white-800 hover:bg-gray-500 hover:cursor-pointer" onClick={() => onItemClick('report')}>
               <ChartBarIcon className="h-6 w-6 mr-2" />
               <a href="#" className={`${isOpen ? '' : 'hidden md:block'} ml-2`} >Report</a>
             </li>
-            <li className="flex items-center px-4 py-2 text-gray-300 hover:bg-green-700 hover:cursor-pointer" onClick={() => onItemClick('settings')}>
+            <li className="flex items-center px-4 py-2 text-white-800 hover:bg-gray-500 hover:cursor-pointer" onClick={() => onItemClick('settings')}>
               <CogIcon className="h-6 w-6 mr-2" />
               <a href="#" className={`${isOpen ? '' : 'hidden md:block'} ml-2`} >Pengaturan</a>
             </li>
-            <li className="flex items-center px-4 py-2 text-gray-300 hover:bg-green-700 hover:cursor-pointer" onClick={() => onItemClick('integrasi')}>
+            <li className="flex items-center px-4 py-2 text-white-800 hover:bg-gray-500 hover:cursor-pointer" onClick={() => onItemClick('integrasi')}>
               <EyeIcon className="h-6 w-6 mr-2" />
               <a href="#" className={`${isOpen ? '' : 'hidden md:block'} ml-2`} >Integrasi</a>
             </li>
+
+
+
+            
           </ul>
         </nav>
 

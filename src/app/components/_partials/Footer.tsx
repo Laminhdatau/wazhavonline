@@ -1,7 +1,7 @@
 export default function Footer() {
-          return (
-                    <footer className="bg-green-800 p-4 text-white">
-                              {/* Footer Content */}
-                    </footer>
-          );
+  return (
+    <footer className="bg-gray-400  p-4 text-white font-bold text-right">
+      Created by: Wazhav Online
+    </footer>
+  );
 }
