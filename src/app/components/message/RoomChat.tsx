@@ -71,9 +71,7 @@ export const RoomChat = () => {
               style={{ maxHeight: "calc(75vh - 100px)" }}
             >
               {messages.map((message) => (
-                <>
                   <ChatItem key={message.id} message={message} />
-                </>
               ))}
             </div>
           </div>
