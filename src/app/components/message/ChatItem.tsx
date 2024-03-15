@@ -41,6 +41,8 @@ export const ChatItem: React.FC<RoomChatProps> = ({ message }: any) => {
           <div>{message.content}</div>
           <div className="flex items-center justify-end text-xs text-gray-500 mt-1 space-x-1">
             {message.time}
+            {message.sender === "me" && (
+<>
             {message.read === 0 ? (
               <svg
                 viewBox="0 0 16 11"
@@ -84,6 +86,10 @@ export const ChatItem: React.FC<RoomChatProps> = ({ message }: any) => {
                 ></path>
               </svg>
             )}
+            </>
+            
+                        )}
+            
           </div>
         </div>
       </div>

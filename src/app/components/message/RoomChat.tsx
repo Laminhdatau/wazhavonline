@@ -32,7 +32,7 @@ export const RoomChat = () => {
       sender: "me",
       content: "I am fine, thank you. How about you?",
       time: formatTime(),
-      read: 2,
+      read: 1,
     }
   ]);
 
