@@ -33,12 +33,14 @@ export const RoomChat = () => {
       content: "I am fine, thank you. How about you?",
       time: formatTime(),
       read: 2,
-    },
+    }
   ]);
 
   return (
-    <div className="flex flex-col px-6 border border-red-500">
-      <div className="flex items-center">
+      <div className="flex h-full bg-gray-900 w-full border ">
+    {/* <div className="flex flex-col px-6 border border-red-500"> */}
+    <div className="w-full p-4 border border-orange-500 ">
+      <div className="flex items-center mb-2  text-white font-bold">
         <div className="flex-shrink-0 h-10 w-10">
           {/* Foto profil bulat */}
           <img
@@ -64,10 +66,10 @@ export const RoomChat = () => {
           backgroundSize: "contain",
         }}
       >
-        <div className="flex flex-col mb-2">
-          <div className="flex">
+        <div className="flex flex-col mb-2 ">
+          <div className="flex ">
             <div
-              className="overflow-y-auto grid grid-cols-12 gap-y-1"
+              className="overflow-y-auto  grid grid-cols-12 gap-y-1 h-full"
               style={{ maxHeight: "calc(75vh - 100px)" }}
             >
               {messages.map((message) => (
@@ -79,7 +81,7 @@ export const RoomChat = () => {
       </div>
 
       {/* AREA SEND */}
-      <div className="flex flex-row items-center h-16 rounded-xl bg-white w-full px-4">
+      <div className="flex flex-row items-center h-16 rounded-xl bg-white w-full px-4 mt-3">
         <div>
           <button className="flex items-center justify-center text-gray-400 hover:text-gray-600">
             <svg
@@ -144,6 +146,7 @@ export const RoomChat = () => {
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 };
