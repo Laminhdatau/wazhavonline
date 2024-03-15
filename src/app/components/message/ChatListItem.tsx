@@ -1,46 +1,50 @@
+import Image from "next/image";
 import React from "react";
+
 interface ChatListItemProps {
-  name: string;
-  phoneNumber: string;
+  contact_name: string;
+  no_penerima: string;
   lastMessage: string;
-  time: string;
-  read: string; // Menetapkan tipe data string untuk prop time
+  timestamp: string;
+  read_chat: string;
 }
 
 export const ChatListItem: React.FC<ChatListItemProps> = ({
-  name,
-  phoneNumber,
+  contact_name,
+  no_penerima,
   lastMessage,
-  time,
-  read,
+  timestamp,
+  read_chat,
 }) => {
+  // Function to format the timestamp into a human-readable format
+ 
+
   return (
     <div className="flex items-center p-2 border-b border-gray-300 hover:border-red-500 cursor-pointer">
-      {/* Profil */}
+      {/* Profile */}
       <div className="flex-shrink-0 mr-4">
-        <img
-          src={`https://ui-avatars.com/api/?name=${name}&size=40`}
-          alt={`${name} Profile`}
-          className="w-10 h-10 rounded-full"
+        <Image
+          src={`https://ui-avatars.com/api/?name=${contact_name}&size=40`}
+          alt={`${contact_name} Profile`}
+          width={40}
+          height={40}
+          className="rounded-full"
         />
       </div>
-      {/* Informasi Chat */}
+      {/* Chat Information */}
       <div className="flex flex-col">
-        <h3 className="font-semibold">{name}</h3>
-        {/* Tampilkan nomor telepon jika tidak ada pesan terakhir */}
-        <p className="text-gray-600">
-          {!lastMessage ? phoneNumber : lastMessage}
-        </p>
+        <h3 className="font-semibold">{contact_name}</h3>
+        {/* Display phone number if there is no last message */}
+        <p className="text-gray-600">{!lastMessage ? no_penerima : lastMessage}</p>
       </div>
-      {/* Waktu */}
-     <div className="ml-auto">
-       {read > "0" ? (
-         <span className="bg-red-500 text-white rounded-full px-2 py-1 text-xs">{read}</span>
-       ) : (
-         <p className="text-gray-500">{time}</p>
-       )}
-     </div>
-     
+      {/* Time */}
+      <div className="ml-auto">
+        {read_chat > "0" ? (
+          <span className="bg-red-500 text-white rounded-full px-2 py-1 text-xs">{read_chat}</span>
+        ) : (
+          <p className="text-gray-500">{timestamp}</p>
+        )}
+      </div>
     </div>
   );
 };
