@@ -8,18 +8,23 @@ interface ChatListItemProps {
   timestamp: string;
   read_chat: string;
   message_id: string;
+  id: string;
 }
 
-const readMessage = async (wamid: string) => {
+const readMessage = async (wamid: string, id: string) => {
   try {
+    if (wamid == "me") {
+      return;
+    }
+
     const response = await fetch(
-      "http://localhost:8080/api/v1/message/readMessage",
+      `http://localhost:8080/api/v1/message/readMessage/${id}`,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ wamid }), // Mengirim wamid sebagai body request
+        body: JSON.stringify({ wamid }), // Send wamid as the request body
       }
     );
 
@@ -28,7 +33,8 @@ const readMessage = async (wamid: string) => {
     }
 
     const data = await response.json();
-    console.log(data); // Menampilkan respons dari permintaan POST (opsional)
+    console.log(data); // Display response from the POST request (optional)
+
   } catch (error) {
     console.error("Error reading message:", error);
   }
@@ -41,11 +47,15 @@ export const ChatListItem: React.FC<ChatListItemProps> = ({
   timestamp,
   read_chat,
   message_id,
+  id,
 }) => {
   // Function to format the timestamp into a human-readable format
   const handleClick = () => {
-    readMessage(message_id); // Memanggil fungsi readMessage dengan message_id sebagai parameter
+    readMessage(message_id, id); // Memanggil fungsi readMessage dengan message_id sebagai parameter
   };
+
+  const moreChat = lastMessage.length > 10 ? lastMessage.substring(0, 10) + "..." : lastMessage
+
   const renderBadge = (read_chat: string) => {
     if (read_chat !== "0") {
       return (
@@ -77,7 +87,7 @@ export const ChatListItem: React.FC<ChatListItemProps> = ({
         <h3 className="font-semibold">{contact_name}</h3>
         {/* Display phone number if there is no last message */}
         <p className="text-gray-600">
-          {!lastMessage ? no_penerima : lastMessage}
+          {!moreChat ? no_penerima : moreChat}
         </p>
       </div>
       {/* Time */}

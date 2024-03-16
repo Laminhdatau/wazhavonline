@@ -9,6 +9,7 @@ interface Chat {
   timestamp: number;
   read_chat: string;
   message_id: string;
+  id: string;
 }
 
 const ChatList: React.FC = () => {
@@ -22,7 +23,24 @@ const ChatList: React.FC = () => {
           throw new Error("Failed to fetch data");
         }
         const data = await response.json();
-        setChatList(data.chatList);
+        // setChatList(data.chatList);
+
+
+
+        // test
+        const sortedChatList = data.chatList.sort((a: Chat, b: Chat) => b.timestamp - a.timestamp);
+        // Buat objek yang hanya berisi satu entri untuk setiap nomor penerima
+        const uniqueChats: { [key: string]: Chat } = {};
+        sortedChatList.forEach((chat: Chat) => {
+          if (!uniqueChats[chat.no_penerima]) {
+            uniqueChats[chat.no_penerima] = chat;
+          }
+        });
+        // Konversi objek kembali menjadi array
+        const uniqueChatList = Object.values(uniqueChats);
+        console.log({ uniqueChatList })
+        setChatList(uniqueChatList);
+
       } catch (error) {
         console.error("Error fetching chat list:", error);
       }
@@ -90,7 +108,7 @@ const ChatList: React.FC = () => {
     }
   };
 
-  console.log({chatList});
+  console.log({ chatList });
 
   return (
     <div className="w-1/4 border border-orange-500">
@@ -107,13 +125,14 @@ const ChatList: React.FC = () => {
           </p>
         ) : (
           chatList.map((chat, index) => (
-            
+
             <ChatListItem
               key={index}
+              id={chat.id}
               contact_name={chat.contact_name}
               no_penerima={chat.no_penerima}
               lastMessage={chat.lastMessage}
-              timestamp={getTimeAgo(chat.timestamp)}
+              timestamp={getTimeAgo(chat.timestamp / 1000)}
               read_chat={chat.read_chat}
               message_id={chat.message_id}
             />
